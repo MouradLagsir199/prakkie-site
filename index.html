@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prakkie — dé boodschappen-app die prijzen vergelijkt</title>
+<meta name="description" content="Prakkie vergelijkt de prijzen van tien Nederlandse supermarkten. Maak je lijstje, scan je kassabon en zie direct waar jij het goedkoopst uit bent.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥕%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Prakkie — nooit te veel betalen voor je boodschappen">
+<meta property="og:description" content="Vergelijk tien supermarkten, scan je kassabon en bespaar elke week.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://mijnprakkie.nl">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FBF8F3; --bg-warm:#F2EEE7; --white:#fff;
+    --ink:#16221D; --muted:#6E7A74; --muted2:#A2ABA6; --line:#EBE5DC;
+    --green:#0F9B72; --green-dark:#0B7C5B; --green-wash:#E8F4EF;
+    --orange:#C0682C; --orange-wash:#F7EDE3;
+    --shadow:0 4px 0 rgba(22,34,29,.16);
+    --shadow-deep:0 6px 0 rgba(22,34,29,.16);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* ── Kop ─────────────────────────────────────────── */
+  header{padding:22px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:24px;letter-spacing:-.3px;text-decoration:none;color:var(--ink)}
+  .logo-dot{width:38px;height:38px;border-radius:13px;background:var(--green);border:2px solid var(--ink);box-shadow:var(--shadow);display:grid;place-items:center;font-size:19px}
+  .nav-pill{
+    font-weight:800;font-size:13px;color:var(--ink);text-decoration:none;background:var(--white);
+    border:2px solid var(--ink);border-radius:999px;padding:10px 18px;box-shadow:var(--shadow);
+    transition:transform .12s ease;white-space:nowrap;
+  }
+  .nav-pill:hover{transform:translateY(-2px)}
+
+  /* ── Held ────────────────────────────────────────── */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:52px 0 72px}
+  .eyebrow{
+    display:inline-block;font-weight:800;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--green-dark);background:var(--green-wash);border:2px solid var(--ink);
+    border-radius:999px;padding:7px 14px;box-shadow:var(--shadow);margin-bottom:20px;
+  }
+  h1{font-size:clamp(34px,5vw,54px);line-height:1.04;font-weight:900;letter-spacing:-1px}
+  h1 .mark{position:relative;white-space:nowrap}
+  h1 .mark::after{
+    content:"";position:absolute;left:-2%;right:-2%;bottom:6%;height:34%;
+    background:var(--green-wash);z-index:-1;border-radius:8px;transform:rotate(-1.2deg);
+  }
+  .sub{font-size:17px;line-height:1.6;font-weight:600;color:var(--muted);margin:22px 0 30px;max-width:44ch}
+  .cta-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .cta{
+    display:inline-flex;align-items:center;gap:12px;background:var(--ink);color:var(--white);
+    text-decoration:none;border-radius:18px;padding:13px 22px;border:2px solid var(--ink);
+    box-shadow:var(--shadow-deep);transition:transform .12s ease;
+  }
+  .cta:hover{transform:translateY(-2px)}
+  .cta svg{width:26px;height:26px}
+  .cta .small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.75}
+  .cta .big{display:block;font-size:17px;font-weight:800;line-height:1.1}
+  .cta-note{font-size:13px;font-weight:700;color:var(--muted)}
+
+  /* ── Telefoon ────────────────────────────────────── */
+  .phone-zone{display:flex;justify-content:center;position:relative}
+  .blob{position:absolute;inset:-8% -6% auto -6%;height:112%;background:var(--green-wash);border-radius:44% 56% 52% 48%/52% 46% 54% 48%;z-index:0;transform:rotate(-3deg)}
+  .phone{
+    position:relative;z-index:1;width:295px;background:var(--bg);border:2.5px solid var(--ink);
+    border-radius:36px;box-shadow:0 10px 0 rgba(22,34,29,.18);padding:16px 14px 18px;transform:rotate(1.6deg);
+  }
+  .notch{width:86px;height:5px;background:var(--ink);border-radius:99px;margin:2px auto 14px;opacity:.85}
+  .p-greet{font-size:19px;font-weight:900;letter-spacing:-.2px;margin-bottom:12px}
+  .p-card{background:var(--white);border:2px solid var(--ink);border-radius:18px;box-shadow:var(--shadow);padding:12px;margin-bottom:12px}
+  .p-row{display:flex;align-items:center;gap:10px;padding:7px 2px}
+  .p-row + .p-row{border-top:1.5px solid var(--line)}
+  .p-dot{width:30px;height:30px;border-radius:10px;border:1.5px solid var(--ink);display:grid;place-items:center;font-size:15px;background:var(--bg)}
+  .p-name{flex:1;font-size:13.5px;font-weight:800}
+  .p-name em{display:block;font-style:normal;font-weight:700;font-size:10px;color:var(--muted)}
+  .p-price{font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
+  .p-badge{
+    display:flex;align-items:center;justify-content:space-between;background:var(--green);color:#fff;
+    border:2px solid var(--ink);border-radius:16px;box-shadow:var(--shadow);padding:12px 14px;
+  }
+  .p-badge .l{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+  .p-badge .w{font-size:16px;font-weight:900}
+  .p-badge .t{font-size:21px;font-weight:900;font-variant-numeric:tabular-nums}
+  .p-save{
+    margin-top:10px;text-align:center;font-size:11.5px;font-weight:800;color:var(--green-dark);
+    background:var(--green-wash);border:1.5px dashed var(--green-dark);border-radius:999px;padding:7px 10px;
+  }
+
+  /* ── Secties ─────────────────────────────────────── */
+  .section-label{
+    text-align:center;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  }
+  h2{text-align:center;font-size:clamp(26px,3.6vw,36px);font-weight:900;letter-spacing:-.6px;margin:10px 0 42px}
+  .features{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding-bottom:84px}
+  .feat{
+    background:var(--white);border:2px solid var(--ink);border-radius:20px;box-shadow:var(--shadow);
+    padding:22px 18px;transition:transform .12s ease;
+  }
+  .feat:hover{transform:translateY(-3px)}
+  .feat .ico{
+    width:46px;height:46px;border-radius:15px;border:2px solid var(--ink);display:grid;place-items:center;
+    font-size:22px;margin-bottom:14px;box-shadow:var(--shadow);
+  }
+  .f1 .ico{background:var(--green-wash)} .f2 .ico{background:var(--orange-wash)}
+  .f3 .ico{background:var(--bg-warm)} .f4 .ico{background:var(--green-wash)}
+  .feat h3{font-size:16.5px;font-weight:900;margin-bottom:7px;letter-spacing:-.2px}
+  .feat p{font-size:13px;line-height:1.55;font-weight:600;color:var(--muted)}
+
+  /* ── Winkels ─────────────────────────────────────── */
+  .chains-band{background:var(--white);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:46px 0 54px}
+  .chains{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:760px;margin:0 auto}
+  .chain{
+    font-size:13px;font-weight:800;border:2px solid var(--ink);border-radius:999px;
+    padding:9px 17px;background:var(--bg);box-shadow:var(--shadow);
+  }
+  .chain:nth-child(odd){transform:rotate(-.6deg)} .chain:nth-child(even){transform:rotate(.6deg)}
+
+  /* ── Zo werkt het ────────────────────────────────── */
+  .steps{padding:84px 0}
+  .step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .step{background:var(--white);border:2px solid var(--ink);border-radius:20px;box-shadow:var(--shadow);padding:24px 20px;position:relative}
+  .step .num{
+    position:absolute;top:-15px;left:20px;width:30px;height:30px;border-radius:11px;background:var(--green);
+    color:#fff;font-weight:900;font-size:14px;display:grid;place-items:center;border:2px solid var(--ink);box-shadow:var(--shadow);
+  }
+  .step h3{font-size:16.5px;font-weight:900;margin:8px 0 7px}
+  .step p{font-size:13px;line-height:1.55;font-weight:600;color:var(--muted)}
+
+  /* ── Slotkaart ───────────────────────────────────── */
+  .final{padding:0 0 90px}
+  .final-card{
+    background:var(--green);border:2.5px solid var(--ink);border-radius:26px;box-shadow:0 8px 0 rgba(22,34,29,.2);
+    padding:52px 28px;text-align:center;color:#fff;
+  }
+  .final-card h2{color:#fff;margin-bottom:12px}
+  .final-card p{font-weight:700;opacity:.92;margin-bottom:26px}
+  .final-card .cta{background:var(--ink)}
+
+  /* ── Voet ────────────────────────────────────────── */
+  footer{border-top:2px solid var(--ink);background:var(--bg-warm);padding:34px 0 40px}
+  .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12.5px;font-weight:700;color:var(--muted)}
+  .foot a{color:var(--green-dark);text-decoration:none;font-weight:800}
+  .foot .brand{font-weight:900;font-size:15px;color:var(--ink)}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;gap:56px;padding-top:32px;text-align:center}
+    .sub{margin-inline:auto}
+    .cta-row{justify-content:center}
+    .features{grid-template-columns:repeat(2,1fr)}
+    .step-grid{grid-template-columns:1fr;gap:26px}
+  }
+  @media (max-width:520px){
+    .features{grid-template-columns:1fr}
+    .foot{flex-direction:column;text-align:center;align-items:center}
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav">
+    <a class="logo" href="#"><span class="logo-dot">🥕</span>Prakkie</a>
+    <a class="nav-pill" href="#binnenkort">Binnenkort in Google Play</a>
+  </nav>
+</header>
+
+<section class="hero wrap">
+  <div>
+    <span class="eyebrow">Slim boodschappen doen</span>
+    <h1>Nooit meer te veel betalen voor je <span class="mark">boodschappen</span></h1>
+    <p class="sub">Prakkie vergelijkt de prijzen van tien Nederlandse supermarkten. Zet je lijstje in de app en zie direct waar jij deze week het goedkoopst uit bent.</p>
+    <div class="cta-row" id="binnenkort">
+      <a class="cta" href="#">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8c-.4.4-.6 1-.6 1.8v16.8c0 .8.2 1.4.6 1.8l.1.1 9.4-9.4v-.2L3.7 1.7l-.1.1zm12.7 12.7-3.1-3.1v-.2l3.1-3.1.1 0 3.7 2.1c1.1.6 1.1 1.6 0 2.2l-3.7 2.1h-.1zm-.8.8L12.3 12 3.8 20.5c.3.4.9.4 1.6 0l10.1-5.2zM5.4 3.5l10.1 5.2-3.2 3.3L3.8 3.5c.3-.4 1-.4 1.6 0z"/></svg>
+        <span><span class="small">Binnenkort in</span><span class="big">Google Play</span></span>
+      </a>
+      <span class="cta-note">Nu in besloten test · gratis te proberen</span>
+    </div>
+  </div>
+
+  <div class="phone-zone">
+    <div class="blob"></div>
+    <div class="phone" aria-hidden="true">
+      <div class="notch"></div>
+      <div class="p-greet">Hoi! Wat eten we? 🍝</div>
+      <div class="p-card">
+        <div class="p-row"><span class="p-dot">🍝</span><span class="p-name">Spaghetti <em>500 g</em></span><span class="p-price">€ 1,09</span></div>
+        <div class="p-row"><span class="p-dot">🍅</span><span class="p-name">Tomaten <em>tros, 1 kg</em></span><span class="p-price">€ 2,49</span></div>
+        <div class="p-row"><span class="p-dot">🧀</span><span class="p-name">Parmezaan <em>150 g</em></span><span class="p-price">€ 3,79</span></div>
+        <div class="p-row"><span class="p-dot">🥩</span><span class="p-name">Gehakt <em>half-om-half</em></span><span class="p-price">€ 4,29</span></div>
+      </div>
+      <div class="p-badge">
+        <span><span class="l">Goedkoopst bij</span><br><span class="w">Jumbo</span></span>
+        <span class="t">€ 11,66</span>
+      </div>
+      <div class="p-save">Je bespaart € 3,12 op dit lijstje 🎉</div>
+    </div>
+  </div>
+</section>
+
+<div class="chains-band">
+  <div class="wrap">
+    <p class="section-label">Tien supermarkten, één app</p>
+    <h2 style="margin-bottom:34px">Wij kennen alle prijzen uit je buurt</h2>
+    <div class="chains">
+      <span class="chain">Albert Heijn</span><span class="chain">Jumbo</span><span class="chain">PLUS</span>
+      <span class="chain">Dirk</span><span class="chain">DekaMarkt</span><span class="chain">Spar</span>
+      <span class="chain">Vomar</span><span class="chain">Ekoplaza</span><span class="chain">Lidl</span>
+      <span class="chain">ALDI</span>
+    </div>
+  </div>
+</div>
+
+<section class="steps wrap">
+  <p class="section-label">Zo werkt het</p>
+  <h2>Drie stapjes, elke week besparen</h2>
+  <div class="step-grid">
+    <div class="step"><span class="num">1</span><h3>Maak je lijstje</h3><p>Typ of plak je boodschappenlijstje, of scan je oude kassabon — Prakkie herkent je producten vanzelf.</p></div>
+    <div class="step"><span class="num">2</span><h3>Vergelijk in één klap</h3><p>Prakkie rekent je hele lijstje door bij tien supermarkten, inclusief alle bonusaanbiedingen van deze week.</p></div>
+    <div class="step"><span class="num">3</span><h3>Kies en bespaar</h3><p>Zie precies waar je het goedkoopst uit bent, volg prijsverloop per product en deel je lijstje met je huisgenoten.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="section-label">Wat je krijgt</p>
+  <h2>Alles voor de slimste boodschappen</h2>
+  <div class="features">
+    <div class="feat f1"><div class="ico">🛒</div><h3>Tien winkels vergelijken</h3><p>Van Albert Heijn tot ALDI: één lijstje, tien totaalprijzen, elke dag vers bijgewerkt.</p></div>
+    <div class="feat f2"><div class="ico">📸</div><h3>Kassabon scannen</h3><p>Maak een foto van je bon en je lijstje staat klaar. Geen getyp, geen gedoe.</p></div>
+    <div class="feat f3"><div class="ico">📉</div><h3>Prijsverloop zien</h3><p>Bekijk per product of de prijs stijgt of daalt, en of die "aanbieding" écht een aanbieding is.</p></div>
+    <div class="feat f4"><div class="ico">👨‍👩‍👧</div><h3>Samen boodschappen</h3><p>Deel je lijstje met een code, dan vult je huisgenoot gewoon mee aan.</p></div>
+  </div>
+</section>
+
+<section class="final wrap">
+  <div class="final-card">
+    <h2>Klaar om te besparen?</h2>
+    <p>Prakkie staat binnenkort voor iedereen in de Google Play Store.</p>
+    <a class="cta" href="#">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 1.8c-.4.4-.6 1-.6 1.8v16.8c0 .8.2 1.4.6 1.8l.1.1 9.4-9.4v-.2L3.7 1.7l-.1.1zm12.7 12.7-3.1-3.1v-.2l3.1-3.1.1 0 3.7 2.1c1.1.6 1.1 1.6 0 2.2l-3.7 2.1h-.1zm-.8.8L12.3 12 3.8 20.5c.3.4.9.4 1.6 0l10.1-5.2zM5.4 3.5l10.1 5.2-3.2 3.3L3.8 3.5c.3-.4 1-.4 1.6 0z"/></svg>
+      <span><span class="small">Binnenkort in</span><span class="big">Google Play</span></span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="brand">🥕 Prakkie</div>
+      Een product van VoxiDent · KVK 78316413
+    </div>
+    <div>
+      Vragen of hulp nodig?<br>
+      <a href="mailto:lagsir99@gmail.com">lagsir99@gmail.com</a>
+    </div>
+    <div>© 2026 VoxiDent<br>Gorinchem, Nederland</div>
+  </div>
+</footer>
+
+</body>
+</html>
