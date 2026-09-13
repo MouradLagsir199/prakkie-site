@@ -5,50 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Privacybeleid — Prakkie</title>
 <meta name="description" content="Het privacybeleid van de Prakkie-app: welke gegevens we gebruiken, waarom, en wat jouw rechten zijn.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥕%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#FBF8F3; --bg-warm:#F2EEE7; --white:#fff;
-    --ink:#16221D; --muted:#6E7A74; --line:#EBE5DC;
-    --green:#0F9B72; --green-dark:#0B7C5B; --green-wash:#E8F4EF;
-    --shadow:0 4px 0 rgba(22,34,29,.16);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
-  header{padding:22px 0}
-  .nav{display:flex;align-items:center;justify-content:space-between}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;text-decoration:none;color:var(--ink)}
-  .logo-dot{width:36px;height:36px;border-radius:12px;background:var(--green);border:2px solid var(--ink);box-shadow:var(--shadow);display:grid;place-items:center;font-size:18px}
-  .nav a.terug{font-weight:800;font-size:13px;color:var(--ink);text-decoration:none;background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:9px 16px;box-shadow:var(--shadow)}
-  main{padding:26px 0 80px}
-  h1{font-size:clamp(30px,4.5vw,40px);font-weight:900;letter-spacing:-.6px;margin-bottom:6px}
-  .datum{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:34px}
-  h2{font-size:19px;font-weight:900;margin:34px 0 10px}
-  p,li{font-size:15px;line-height:1.7;font-weight:600;color:#3c4a44}
-  ul{padding-left:22px;margin:8px 0}
-  li{margin-bottom:6px}
-  a{color:var(--green-dark);font-weight:800}
-  .kaart{background:var(--white);border:2px solid var(--ink);border-radius:18px;box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
-  .kaart p{margin:0}
-  footer{border-top:2px solid var(--ink);background:var(--bg-warm);padding:28px 0;font-size:12.5px;font-weight:700;color:var(--muted);text-align:center}
-</style>
+<link rel="icon" href="/assets/prakkie-icon.png" type="image/png">
+<link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="legal"><a class="skip" href="#inhoud">Naar de inhoud</a>
 
-<header class="wrap">
-  <nav class="nav">
-    <a class="logo" href="/"><span class="logo-dot">🥕</span>Prakkie</a>
-    <a class="terug" href="/">← Terug naar de site</a>
-  </nav>
-</header>
+<header class="header wrap"><a class="brand" href="/" aria-label="Prakkie — home"><img src="/assets/prakkie-icon.png" width="44" height="44" alt=""><span>Prakkie<span class="spark" aria-hidden="true">✳</span></span></a><a class="text-link" href="/">← Terug naar de site</a></header>
 
-<main class="wrap">
+<main id="inhoud" class="legal-content wrap">
   <h1>Privacybeleid</h1>
-  <p class="datum">Laatst bijgewerkt: 31 augustus 2026</p>
+  <p class="datum">Laatst bijgewerkt: 13 september 2026</p>
 
   <p>Prakkie is de boodschappen-app van VoxiDent (KVK 78316413), gevestigd in Gorinchem, Nederland. Dit beleid legt in gewone taal uit welke gegevens de app gebruikt, waarom, en wat jouw rechten zijn. Kort samengevat: we verzamelen zo min mogelijk, we verkopen nooit iets door, en je kunt je account en alle gegevens altijd laten verwijderen.</p>
 
@@ -56,8 +22,8 @@
   <ul>
     <li><strong>Accountgegevens</strong> — je e-mailadres en (als je die geeft) je naam. Inloggen verloopt via onze inlogdienst Clerk. Zo weten we welk boodschappenlijstje van wie is.</li>
     <li><strong>Je boodschappenlijstjes</strong> — de producten die je toevoegt en de lijstjes die je bewaart of deelt. Die staan versleuteld opgeslagen op onze servers (Microsoft Azure, regio Europa).</li>
-    <li><strong>Foto's die je zelf scant</strong> — als je een handgeschreven lijstje of kassabon fotografeert, sturen we die foto naar OpenAI om er tekst uit te lezen. De <em>foto</em> zelf bewaren wij niet.</li>
-    <li><strong>De tekst die uit een scan komt</strong> — wat er gelezen is (de regels van je lijstje of bon, met aantallen, bedragen en kortingsregels) bewaren we wél, gekoppeld aan jouw account. Daarmee kun je een eerdere scan terugzien en kunnen wij storingen naspeuren. Bij een kassabon is dat dus wat je gekocht hebt. Verwijder je je account, dan gaat dit mee weg.</li>
+    <li><strong>Eerdere scans</strong> — de huidige app biedt geen bon- of lijstjesscanner meer. Tekst uit scans die je eerder hebt gemaakt kan nog aan je account gekoppeld zijn en valt ook onder verwijdering van je account. De foto zelf bewaren wij niet.</li>
+    <li><strong>Je favorieten</strong> — je bewaarde producten staan lokaal op je telefoon, gescheiden per account. Favorieten worden niet automatisch tussen apparaten gesynchroniseerd.</li>
     <li><strong>Je profielfoto</strong> — kies je er zelf een, dan slaan we die op bij onze inlogdienst Clerk en bewaren wij het adres van die foto bij je account. Je hoeft geen profielfoto te kiezen.</li>
     <li><strong>Wat je zoekt</strong> — als je zoekt, vraagt de app rechtstreeks vanaf je telefoon bij de supermarkten zelf de actuele prijzen op. Je zoekwoord en het IP-adres van je telefoon gaan daarbij naar die supermarkt. Wij bewaren je zoekopdrachten niet, maar wij kunnen ook niet bepalen wat die supermarkten ermee doen.</li>
     <li><strong>Aankoopgegevens</strong> — als je Prakkie Plus koopt, verwerkt de winkel van je telefoon (de App Store van Apple of Google Play) de betaling, samen met onze abonnementendienst RevenueCat. Wij zien nooit je betaalgegevens; wij horen alleen óf je een abonnement hebt.</li>
@@ -68,7 +34,7 @@
     <li>We tonen geen advertenties.</li>
     <li>We verkopen of verhuren je gegevens niet aan derden.</li>
     <li>We volgen je niet door andere apps of over het web.</li>
-    <li>We vragen geen locatie of contacten. De app vraagt om twee dingen, allebei alleen op jouw initiatief: de camera op het moment dat jij zelf scant, en je fotobibliotheek op het moment dat jij zelf een profielfoto kiest.</li>
+    <li>We vragen geen locatie of contacten. Je geeft alleen toegang tot je fotobibliotheek wanneer je zelf een profielfoto wilt kiezen.</li>
   </ul>
 
   <h2>Met wie we gegevens delen</h2>
@@ -76,7 +42,7 @@
   <ul>
     <li><strong>Clerk</strong> — inloggen en accountbeheer</li>
     <li><strong>Microsoft Azure</strong> — onze servers en opslag (Europa)</li>
-    <li><strong>OpenAI</strong> — het lezen van jouw gescande foto's</li>
+    <li><strong>OpenAI (eerdere scanfunctie)</strong> — werd gebruikt om foto's uit eerdere scans te lezen. De huidige app biedt deze scanfunctie niet meer aan.</li>
     <li><strong>RevenueCat, samen met de App Store of Google Play</strong> — abonnementen en betalingen</li>
     <li><strong>De supermarkten zelf</strong> — bij een zoekopdracht gaat je zoekwoord rechtstreeks vanaf je telefoon naar de website van de winkel: Albert Heijn, Jumbo, PLUS, SPAR, Vomar en Ekoplaza. Dat is wat de prijzen actueel houdt.</li>
   </ul>
@@ -86,7 +52,7 @@
 
   <h2>Je account verwijderen</h2>
   <div class="kaart">
-    <p>Stuur een mailtje naar <a href="mailto:info@mijnprakkie.nl">info@mijnprakkie.nl</a> met als onderwerp "Account verwijderen", vanaf het e-mailadres waarmee je bent ingelogd. We verwijderen je account en alle bijbehorende gegevens binnen 30 dagen en bevestigen dat per mail.</p>
+    <p>Je kunt je account verwijderen in de app via Profiel. Lukt dat niet, stuur dan een mailtje naar <a href="mailto:info@mijnprakkie.nl">info@mijnprakkie.nl</a> met als onderwerp "Account verwijderen", vanaf het e-mailadres waarmee je bent ingelogd. We verwijderen je account en alle bijbehorende gegevens binnen 30 dagen en bevestigen dat per mail.</p>
   </div>
 
   <h2>Jouw rechten (AVG)</h2>
@@ -103,9 +69,7 @@
   E-mail: <a href="mailto:info@mijnprakkie.nl">info@mijnprakkie.nl</a></p>
 </main>
 
-<footer>
-  <div class="wrap">🥕 Prakkie · een product van VoxiDent · © 2026</div>
-</footer>
+<footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="/" aria-label="Prakkie — home"><img src="/assets/prakkie-icon.png" width="44" height="44" alt=""><span>Prakkie<span class="spark" aria-hidden="true">✳</span></span></a><p>Al je supermarkten in één app.</p><small>Een product van VoxiDent · KVK 78316413<br>Gorinchem, Nederland · © 2026</small></div><div><h3>Even contact?</h3><a href="mailto:info@mijnprakkie.nl">info@mijnprakkie.nl</a><p>Voor vragen, ideeën of hulp met de app.</p></div><nav aria-label="Meer informatie"><a href="/privacy.html">Privacybeleid</a><a href="/voorwaarden.html">Voorwaarden</a><a href="/account-verwijderen.html">Account verwijderen</a></nav></div></footer>
 
 </body>
 </html>

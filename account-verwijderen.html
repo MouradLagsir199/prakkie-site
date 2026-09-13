@@ -5,51 +5,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Account verwijderen — Prakkie</title>
 <meta name="description" content="Zo verwijder je je Prakkie-account en alle bijbehorende gegevens.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🥕%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#FBF8F3; --bg-warm:#F2EEE7; --white:#fff;
-    --ink:#16221D; --muted:#6E7A74; --line:#EBE5DC;
-    --green:#0F9B72; --green-dark:#0B7C5B; --green-wash:#E8F4EF;
-    --shadow:0 4px 0 rgba(22,34,29,.16);
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{font-family:'Nunito',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased}
-  .wrap{max-width:760px;margin:0 auto;padding:0 24px}
-  header{padding:22px 0}
-  .nav{display:flex;align-items:center;justify-content:space-between}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:22px;text-decoration:none;color:var(--ink)}
-  .logo-dot{width:36px;height:36px;border-radius:12px;background:var(--green);border:2px solid var(--ink);box-shadow:var(--shadow);display:grid;place-items:center;font-size:18px}
-  .nav a.terug{font-weight:800;font-size:13px;color:var(--ink);text-decoration:none;background:var(--white);border:2px solid var(--ink);border-radius:999px;padding:9px 16px;box-shadow:var(--shadow)}
-  main{padding:26px 0 80px}
-  h1{font-size:clamp(30px,4.5vw,40px);font-weight:900;letter-spacing:-.6px;margin-bottom:14px}
-  h2{font-size:19px;font-weight:900;margin:34px 0 10px}
-  p,li{font-size:15px;line-height:1.7;font-weight:600;color:#3c4a44}
-  ol,ul{padding-left:22px;margin:8px 0}
-  li{margin-bottom:6px}
-  a{color:var(--green-dark);font-weight:800}
-  .kaart{background:var(--white);border:2px solid var(--ink);border-radius:18px;box-shadow:var(--shadow);padding:18px 20px;margin:14px 0}
-  .kaart p{margin:0}
-  footer{border-top:2px solid var(--ink);background:var(--bg-warm);padding:28px 0;font-size:12.5px;font-weight:700;color:var(--muted);text-align:center}
-</style>
+<link rel="icon" href="/assets/prakkie-icon.png" type="image/png">
+<link rel="stylesheet" href="/styles.css">
 </head>
-<body>
+<body class="legal"><a class="skip" href="#inhoud">Naar de inhoud</a>
 
-<header class="wrap">
-  <nav class="nav">
-    <a class="logo" href="/"><span class="logo-dot">🥕</span>Prakkie</a>
-    <a class="terug" href="/">← Terug naar de site</a>
-  </nav>
-</header>
+<header class="header wrap"><a class="brand" href="/" aria-label="Prakkie — home"><img src="/assets/prakkie-icon.png" width="44" height="44" alt=""><span>Prakkie<span class="spark" aria-hidden="true">✳</span></span></a><a class="text-link" href="/">← Terug naar de site</a></header>
 
-<main class="wrap">
+<main id="inhoud" class="legal-content wrap">
   <h1>Je Prakkie-account verwijderen</h1>
   <p>Wil je stoppen met de Prakkie-app (van VoxiDent)? Dan verwijderen we je account en alle bijbehorende gegevens. Zo werkt het:</p>
 
-  <h2>Zo vraag je verwijdering aan</h2>
+  <h2>Verwijderen in de app</h2><p>Open Profiel, kies Account verwijderen en bevestig je keuze. Heb je Prakkie Plus, zeg dan je abonnement apart op via de App Store of Google Play.</p>
+  <h2>Lukt het niet in de app?</h2>
   <div class="kaart">
     <ol>
       <li>Stuur een e-mail naar <a href="mailto:info@mijnprakkie.nl?subject=Account%20verwijderen">info@mijnprakkie.nl</a> met als onderwerp <strong>"Account verwijderen"</strong>.</li>
@@ -63,7 +31,7 @@
     <li>Je accountgegevens (e-mailadres en naam)</li>
     <li>Al je boodschappenlijstjes op onze servers</li>
     <li>Je deelcodes en gedeelde lijstjes</li>
-    <li>Je scan-tegoed en abonnementsstatus in onze administratie</li>
+    <li>Eventuele gegevens uit eerdere scans en je abonnementsstatus in onze administratie</li>
   </ul>
 
   <h2>Wat er (even) bewaard blijft</h2>
@@ -75,9 +43,7 @@
   <p>Meer weten over hoe we met je gegevens omgaan? Lees ons <a href="/privacy.html">privacybeleid</a>.</p>
 </main>
 
-<footer>
-  <div class="wrap">🥕 Prakkie · een product van VoxiDent · KVK 78316413 · © 2026</div>
-</footer>
+<footer class="footer"><div class="wrap footer-grid"><div><a class="brand" href="/" aria-label="Prakkie — home"><img src="/assets/prakkie-icon.png" width="44" height="44" alt=""><span>Prakkie<span class="spark" aria-hidden="true">✳</span></span></a><p>Al je supermarkten in één app.</p><small>Een product van VoxiDent · KVK 78316413<br>Gorinchem, Nederland · © 2026</small></div><div><h3>Even contact?</h3><a href="mailto:info@mijnprakkie.nl">info@mijnprakkie.nl</a><p>Voor vragen, ideeën of hulp met de app.</p></div><nav aria-label="Meer informatie"><a href="/privacy.html">Privacybeleid</a><a href="/voorwaarden.html">Voorwaarden</a><a href="/account-verwijderen.html">Account verwijderen</a></nav></div></footer>
 
 </body>
 </html>

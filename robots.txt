@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mijnprakkie.nl/sitemap.xml
