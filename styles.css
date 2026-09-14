@@ -25,3 +25,6 @@
 /* Keep the download logos legible alongside their labels on narrow screens. */
 @media(max-width:760px){.hero .store-link,.download-card .store-link{gap:10px}.store-logo{width:26px;height:29px;flex-basis:26px}}
 @media(max-width:380px){.hero .downloads{flex-direction:column;align-items:flex-start}.hero .downloads .store-link{width:190px;max-width:190px;flex:auto}}
+
+.showcase-back{display:none}#feature-options,#feature-preview{scroll-margin-top:20px}
+@media(max-width:760px){.showcase-back{display:inline-flex;margin-top:18px}}

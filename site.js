@@ -17,5 +17,12 @@ document.querySelectorAll('[data-screen]').forEach(button => {
     image.src = '/assets/app-' + screen + '.png';
     image.alt = screens[screen][0];
     document.getElementById('feature-caption').textContent = screens[screen][1] + ' · voorbeeldgegevens';
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      const preview = document.getElementById('feature-preview');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      requestAnimationFrame(() => {
+        preview.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth', block: 'start' });
+      });
+    }
   });
 });
