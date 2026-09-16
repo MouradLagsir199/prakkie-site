@@ -7,5 +7,8 @@
   var link = document.getElementById(isApple ? 'apple-download' : 'android-download');
   // Fixed destinations only. Unknown devices retain both download buttons.
   // No pixel, cookies, identifiers or arbitrary query-string redirects.
-  if ((isApple || isAndroid) && link) window.location.replace(link.href);
+  if ((isApple || isAndroid) && link) {
+    if (window.PrakkieStats) window.PrakkieStats.track('redirect', isApple ? 'apple' : 'google');
+    window.location.replace(link.href);
+  }
 }());
