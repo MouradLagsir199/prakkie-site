@@ -1,56 +1,20 @@
 <!doctype html>
-<html lang="nl">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
-  <title>Websitestatistieken — Prakkie</title>
-  <link rel="icon" href="/assets/prakkie-icon.png" type="image/png">
-  <link rel="stylesheet" href="/styles.css">
-  <style>
-    [hidden]{display:none!important}
-    main{max-width:940px;margin:48px auto;padding:0 24px}h1{font-size:clamp(28px,5vw,44px)}
-    form,.toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:24px 0}
-    input,select,button{font:inherit;padding:12px;border:1px solid #abbcaf;border-radius:10px}
-    button{background:#145a3b;color:white;cursor:pointer}button:disabled{opacity:.5}
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin:24px 0}
-    .card{background:#fff;border:1px solid #dbe4df;border-radius:16px;padding:20px}.card strong{font-size:36px;display:block}
-    .table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse}th,td{text-align:right;padding:12px;border-bottom:1px solid #dbe4df}th:first-child,td:first-child{text-align:left}
-    small,.muted{color:#4b5c53}#status{min-height:28px}label{font-weight:600}
-  </style>
-  <script src="/stats/dashboard.js" defer></script>
-</head>
-<body>
-  <header class="header wrap"><a class="brand" href="/"><img src="/assets/prakkie-icon.png" width="44" height="44" alt=""><span>Prakkie</span></a></header>
-  <main>
-    <h1>Website → appstores</h1>
-    <p>Dagtotalen vanaf 16 september 2026. Herhaalde bezoeken en klikken tellen opnieuw mee.</p>
-    <form id="login">
-      <label for="token">Prakkie Admin-toegangscode</label>
-      <input id="token" type="password" required autocomplete="off" spellcheck="false">
-      <button type="submit">Bekijken</button>
-    </form>
-    <p id="status" role="status" aria-live="polite"></p>
-    <section id="report" hidden>
-      <div class="toolbar">
-        <label for="days">Periode</label>
-        <select id="days"><option value="7">7 dagen</option><option value="30" selected>30 dagen</option><option value="90">90 dagen</option></select>
-        <button id="refresh" type="button">Vernieuwen</button>
-        <button id="logout" type="button">Uitloggen</button>
-      </div>
-      <p id="period" class="muted"></p>
-      <div class="cards">
-        <div class="card">Paginaweergaven<strong id="views">0</strong><small>Homepage en downloadpagina</small></div>
-        <div class="card">App Store<strong id="apple">0</strong><small id="apple-detail"></small></div>
-        <div class="card">Google Play<strong id="google">0</strong><small id="google-detail"></small></div>
-      </div>
-      <p>De downloadpagina stuurt mobiele bezoekers automatisch naar hun store. Dat telt apart van een klik op een downloadknop. Deze cijfers bevestigen geen download of registratie en tellen geen unieke personen.</p>
-      <div class="table-wrap"><table>
-        <thead><tr><th>Datum</th><th>Paginaweergaven</th><th>App Store<br><small>klikken / automatisch</small></th><th>Google Play<br><small>klikken / automatisch</small></th></tr></thead>
-        <tbody id="rows"></tbody>
-      </table></div>
-      <p class="muted">Tijdzone: Nederland. Meting kan ontbreken door browserblokkades of verbindingsproblemen. De toegangscode blijft alleen in het geheugen van dit tabblad.</p>
-    </section>
-  </main>
-</body>
-</html>
+<html lang="nl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<title>Prakkie — Live overzicht</title><link rel="icon" href="/assets/prakkie-icon.png"><link rel="stylesheet" href="/stats/dashboard.css?v=20260917"><script src="/stats/dashboard.js?v=20260917" defer></script>
+</head><body>
+<header><a class="brand" href="/"><img src="/assets/prakkie-icon.png" alt="" width="38" height="38">Prakkie <span>inzicht</span></a><span class="private">Alleen voor beheer</span></header>
+<main><div class="heading"><div><p class="eyebrow">JE APP, IN ÉÉN OVERZICHT</p><h1>Hoe gaat het met Prakkie?</h1><p class="muted">Van een eerste bezoek tot een abonnement. En de prijzen die alles laten werken.</p></div><span class="live"><i></i> Live dashboard</span></div>
+<form id="login" class="panel login"><h2>Welkom terug</h2><p>Open je overzicht met de bestaande Prakkie Admin-toegangscode.</p><label for="token">Toegangscode</label><div class="login-fields"><input id="token" type="password" required autocomplete="off" spellcheck="false"><button type="submit">Open dashboard →</button></div></form>
+<p id="status" class="status" role="status" aria-live="polite"></p>
+<div id="report" hidden>
+<div class="toolbar"><nav aria-label="Dashboard onderdelen"><a href="#overview">Overzicht</a><a href="#subscriptions">Abonnementen</a><a href="#growth">Bereik & groei</a><a href="#refresh-data">Data & prijzen</a></nav><div class="controls"><label for="days">Periode</label><select id="days"><option value="1">Vandaag</option><option value="7" selected>7 dagen</option><option value="30">30 dagen</option><option value="90">90 dagen</option></select><button id="refresh" class="secondary" type="button">Vernieuwen</button><button id="logout" class="text-button" type="button">Uitloggen</button></div></div>
+<p id="period" class="muted"></p><section id="overview" class="overview cards" aria-label="Kerncijfers"></section>
+<section id="subscriptions" class="panel"><div class="section-head"><div><p class="eyebrow">REVENUECAT</p><h2>Abonnementen & omzet</h2></div><span id="rc-state" class="badge"></span></div><div id="rc-cards" class="cards metrics"></div><p id="rc-note" class="muted"></p><details><summary>Ontvangen aankoopmeldingen</summary><p id="purchase-note"></p></details></section>
+<div id="growth" class="two-col"><section class="panel"><div class="section-head"><div><p class="eyebrow">CLERK</p><h2>Nieuwe gebruikers</h2></div><span id="clerk-state" class="badge"></span></div><div id="clerk-cards" class="cards metrics"></div><div id="user-chart" class="chart" aria-label="Nieuwe gebruikers per dag"></div><p class="muted">Aangemaakte accounts die nog in Clerk bestaan. Een nieuw account is niet automatisch een trial of abonnement.</p></section>
+<section class="panel"><div class="section-head"><div><p class="eyebrow">WEBSITE → APPSTORES</p><h2>Van kijken naar klikken</h2></div><span id="web-state" class="badge"></span></div><div id="web-cards" class="cards metrics"></div><p class="muted">Klikken en automatische doorverwijzingen tellen apart. Geen unieke bezoekers of bevestigde installaties. Meting vanaf 16 september 2026.</p></section></div>
+<section class="panel"><div class="section-head"><div><p class="eyebrow">DAG VOOR DAG</p><h2>Bereik & registraties</h2></div><span class="muted">Nederlandse tijd</span></div><div class="table-wrap"><table><thead><tr><th>Datum</th><th>Paginaweergaven</th><th>App Store<br><small>klik / automatisch</small></th><th>Google Play<br><small>klik / automatisch</small></th><th>Nieuwe accounts</th></tr></thead><tbody id="days-table"></tbody></table></div><p class="muted">Losse tellingen: er is geen koppeling tussen een websiteklik en een individueel account. Vandaag is nog niet volledig.</p></section>
+<section id="refresh-data" class="panel"><div class="section-head"><div><p class="eyebrow">DE MOTOR ACHTER PRAKKIE</p><h2>Data & prijsverversing</h2></div><span id="catalog-state" class="badge"></span></div><div id="pipeline-cards" class="cards"></div><p id="catalog-note" class="muted"></p><div class="table-wrap"><table><thead><tr><th>Winkel</th><th>Producten</th><th>Aanbiedingen</th><th>Vandaag waargenomen</th><th>Laatste bronwaarneming</th></tr></thead><tbody id="stores-table"></tbody></table></div><p class="muted">Een geslaagde publicatie betekent niet dat elke productprijs vandaag is opgehaald. Per winkel zie je de werkelijke bronwaarnemingen. Aanbiedingen kunnen een klantenkaart of meerdere stuks vereisen.</p></section>
+<section class="examples-section"><div class="section-head"><div><p class="eyebrow">EEN KIJKJE IN DE CATALOGUS</p><h2>Vandaag gevonden</h2></div><label>Winkel <select id="example-store"><option value="all">Alle winkels</option></select></label></div><p id="examples-note" class="muted"></p><div id="examples" class="cards products"></div></section>
+<footer>Automatisch verversen elke minuut zolang dit tabblad zichtbaar is. Bronnen kunnen zelf vertraging hebben. De toegangscode blijft alleen in het geheugen van dit tabblad.</footer>
+</div></main></body></html>
