@@ -20,6 +20,7 @@
     $('overview').replaceChildren();
     card($('overview'),'Omzet in deze periode',money(r&&r.connected?r.revenue:null),'RevenueCat · bruto, vóór belastingen en storekosten');
     card($('overview'),'Nieuwe accounts',number(c?c.newUsers:null),'Clerk · geselecteerde periode');
+    card($('overview'),'Actieve gebruikers',number(c&&c.active?c.active.period:null),'Clerk · openden de app in deze periode');
     card($('overview'),'Actieve trials',number(metric('active_trials')),'RevenueCat · huidige stand');
     card($('overview'),'Naar de appstores',number(totals?totals.apple_click+totals.apple_redirect+totals.google_click+totals.google_redirect:null),'Klikken + automatische doorverwijzingen');
     badge('rc-state',report.revenuecat);badge('clerk-state',report.clerk);badge('web-state',report.website);badge('catalog-state',report.catalog);
@@ -30,11 +31,36 @@
     $('rc-note').textContent=r&&r.connected?'Omzet volgt de gekozen periode; MRR, abonnementen en trials zijn actuele standen. RevenueCat bepaalt de verwerkingstijd en eigen rapportagegrenzen. '+r.metrics.map(function(m){return m.id==='mrr'?(m.updatedAt?'MRR-bron bijgewerkt: '+when(m.updatedAt)+'.':'RevenueCat geeft geen afzonderlijk bronmoment mee.'):'';}).join(''):(r?r.message:report.revenuecat.message);
     if(r&&!r.connected){$('rc-state').textContent='Koppeling ontbreekt';$('rc-state').className='badge warn';}
     $('purchase-note').textContent=ps?number(ps.trials)+' actieve trialaccounts en '+number(ps.paidSubscriptions)+' actieve betaalde accounts afgeleid uit ontvangen productie-aankoopmeldingen. '+number(ps.sandboxEvents)+' testmeldingen uitgesloten. Laatste melding: '+when(ps.lastReceived)+'. Deze controle kan onvolledig zijn en is niet de officiële RevenueCat-stand. Handmatige toegang telt niet mee.':report.purchases.message;
-    $('clerk-cards').replaceChildren();card($('clerk-cards'),'Totaal',number(c?c.total:null),'Bestaande accounts');card($('clerk-cards'),'Nieuw',number(c?c.newUsers:null),'In deze periode');card($('clerk-cards'),'Vandaag',number(c?c.today:null),'Sinds 00:00');
+    $('clerk-cards').replaceChildren();card($('clerk-cards'),'Totaal',number(c?c.total:null),'Bestaande accounts');card($('clerk-cards'),'Nieuw',number(c?c.newUsers:null),'In deze periode');card($('clerk-cards'),'Vandaag',number(c?c.today:null),'Sinds 00:00');card($('clerk-cards'),'Actief vandaag',number(c&&c.active?c.active.today:null),'Openden de app sinds 00:00');card($('clerk-cards'),'Actief in periode',number(c&&c.active?c.active.period:null),'Unieke gebruikers');
     $('user-chart').replaceChildren();if(c){var max=Math.max(1,...Object.values(c.daily));days(report.period).forEach(function(day){var count=c.daily[day]||0,b=el('div',null,'bar');b.style.height=Math.max(2,count/max*90)+'px';b.title=day+': '+count+' nieuwe accounts';b.setAttribute('aria-label',b.title);if(report.period.days<=7)b.append(el('span',String(count)));$('user-chart').append(b);});}
     $('web-cards').replaceChildren();card($('web-cards'),'Paginaweergaven',number(totals?totals.view:null),'Homepage + downloadpagina');['apple','google'].forEach(function(s){card($('web-cards'),s==='apple'?'App Store':'Google Play',number(totals?totals[s+'_click']+totals[s+'_redirect']:null),totals?number(totals[s+'_click'])+' klikken · '+number(totals[s+'_redirect'])+' automatisch':'Niet beschikbaar');});
     $('days-table').replaceChildren();days(report.period).reverse().forEach(function(day){var t=w?storeTotals(w.rows.filter(function(row){return row.date===day;})):null;var tracked=day>='2026-09-16';var tr=el('tr');[day,tracked&&t?number(t.view):'—',tracked&&t?number(t.apple_click)+' / '+number(t.apple_redirect):'—',tracked&&t?number(t.google_click)+' / '+number(t.google_redirect):'—',c?number(c.daily[day]||0):'—'].forEach(function(v){tr.append(el('td',v));});$('days-table').append(tr);});
+    renderStores(report);
     renderCatalog(report,cat);
+  }
+  function renderStores(report){
+    var p=data(report.play),a=data(report.apple);
+    badge('play-state',report.play);badge('apple-state',report.apple);
+    $('play-cards').replaceChildren();
+    if(p&&p.connected){
+      card($('play-cards'),'Actieve apparaten',number(p.activeDevices),p.lastDate?'Stand op '+p.lastDate:'Nog geen dag gepubliceerd');
+      card($('play-cards'),'Totaal installaties',number(p.totalInstalls),'Gebruikers die de app nu hebben');
+      var laatste=p.daily&&p.daily.length?p.daily[p.daily.length-1]:null;
+      card($('play-cards'),'Nieuw / verwijderd',laatste?number(laatste.installs)+' / '+number(laatste.uninstalls):'—',laatste?'Op '+laatste.date:'Nog geen dag gepubliceerd');
+      $('play-note').textContent='Google publiceert deze cijfers met enkele dagen vertraging; '+(p.lastDate?'de nieuwste dag is '+p.lastDate+'.':'voor deze periode is nog niets gepubliceerd.')+' Actieve apparaten telt toestellen waarop de app staat, niet openingen.';
+    } else {
+      $('play-note').textContent=p?p.message:report.play.message;
+      if(p){$('play-state').textContent='Koppeling ontbreekt';$('play-state').className='badge warn';}
+    }
+    $('apple-cards').replaceChildren();
+    if(a&&a.connected){
+      (a.reports||[]).forEach(function(r){card($('apple-cards'),r.name,r.latestInstance||'—','Nieuwste rapport van Apple');});
+      if(!(a.reports||[]).length)card($('apple-cards'),'Rapporten','—','Apple heeft nog niets gepubliceerd');
+      $('apple-note').textContent='Apple levert deze cijfers als dagrapport met ongeveer een dag vertraging. Hier staat welk rapport het meest recent is; er wordt nooit een dag ingevuld die Apple niet heeft gepubliceerd.';
+    } else {
+      $('apple-note').textContent=a?a.message:report.apple.message;
+      if(a){$('apple-state').textContent='Koppeling ontbreekt';$('apple-state').className='badge warn';}
+    }
   }
   function renderCatalog(report,cat){
     var pipelines=data(report.pipelines);$('pipeline-cards').replaceChildren();
@@ -54,7 +80,7 @@
   }
   async function refresh(){
     if(busy||!token)return;busy=true;$('refresh').disabled=true;$('days').disabled=true;$('status').textContent='Cijfers ophalen…';$('status').className='status';
-    try{var response=await fetch('https://prakkie-api-prod.azurewebsites.net/v1/analytics?days='+$('days').value,{headers:{Authorization:'Bearer '+token},cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer',signal:AbortSignal.timeout(120000)});if(!response.ok){if(response.status===401){token='';$('report').hidden=true;$('login').hidden=false;}throw new Error(response.status===401?'Ongeldige toegangscode.':'Ophalen mislukt. Eerdere cijfers zijn niet bijgewerkt.');}var report=await response.json();render(report);$('report').hidden=false;$('login').hidden=true;$('token').value='';var errors=['clerk','revenuecat','website','catalog','pipelines','purchases'].filter(function(k){return report[k].status==='error';});$('status').textContent='Bijgewerkt '+when(report.generatedAt)+' · Automatisch elke minuut'+(errors.length?' · '+errors.length+' bron(nen) tijdelijk niet beschikbaar':'');if(errors.length)$('status').className='status failed';}
+    try{var response=await fetch('https://prakkie-api-prod.azurewebsites.net/v1/analytics?days='+$('days').value,{headers:{Authorization:'Bearer '+token},cache:'no-store',credentials:'omit',referrerPolicy:'no-referrer',signal:AbortSignal.timeout(120000)});if(!response.ok){if(response.status===401){token='';$('report').hidden=true;$('login').hidden=false;}throw new Error(response.status===401?'Ongeldige toegangscode.':'Ophalen mislukt. Eerdere cijfers zijn niet bijgewerkt.');}var report=await response.json();render(report);$('report').hidden=false;$('login').hidden=true;$('token').value='';var errors=['clerk','revenuecat','website','catalog','pipelines','purchases','play','apple'].filter(function(k){return report[k].status==='error';});$('status').textContent='Bijgewerkt '+when(report.generatedAt)+' · Automatisch elke minuut'+(errors.length?' · '+errors.length+' bron(nen) tijdelijk niet beschikbaar':'');if(errors.length)$('status').className='status failed';}
     catch(err){$('status').textContent=err.name==='TimeoutError'?'Het ophalen duurt te lang. Probeer opnieuw; eerdere cijfers zijn niet bijgewerkt.':err.message;$('status').className='status failed';}
     finally{busy=false;$('refresh').disabled=false;$('days').disabled=false;}
   }
